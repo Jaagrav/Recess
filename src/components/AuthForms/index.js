@@ -4,7 +4,7 @@ import Logo from "../../assets/logo.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button, IconButton } from "@material-ui/core";
-import { Google as GoogleIcon } from "@material-ui/icons";
+import { Facebook as FacebookIcon } from "@material-ui/icons";
 
 import firebase from "firebase";
 import { auth } from "../../firebase";
@@ -24,9 +24,9 @@ function getModalStyle() {
   };
 }
 
-function signInWithGoogle(event) {
+function signInWithFacebook(event) {
   event.preventDefault();
-  var provider = new firebase.auth.GoogleAuthProvider();
+  var provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider);
 }
 
@@ -108,9 +108,9 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithGoogle}
+                onClick={signInWithFacebook}
               >
-                <GoogleIcon />
+                <FacebookIcon />
               </IconButton>
             </span>
           </div>
@@ -182,9 +182,9 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithGoogle}
+                onClick={signInWithFacebook}
               >
-                <GoogleIcon />
+                <FacebookIcon />
               </IconButton>
             </span>
           </div>
