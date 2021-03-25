@@ -4,7 +4,10 @@ import Logo from "../../assets/logo.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button, IconButton } from "@material-ui/core";
-import { Google as GoogleIcon } from "@material-ui/icons";
+import {
+  Google as GoogleIcon,
+  Twitter as TwitterIcon,
+} from "@material-ui/icons";
 
 import firebase from "firebase";
 import { auth } from "../../firebase";
@@ -25,6 +28,12 @@ function getModalStyle() {
 }
 
 function signInWithGoogle(event) {
+  event.preventDefault();
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider);
+}
+
+function signInWithTwitter(event) {
   event.preventDefault();
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
@@ -112,6 +121,13 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
               >
                 <GoogleIcon />
               </IconButton>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithTwitter}
+              >
+                <TwitterIcon />
+              </IconButton>
             </span>
           </div>
         </form>
@@ -185,6 +201,13 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
                 onClick={signInWithGoogle}
               >
                 <GoogleIcon />
+              </IconButton>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithTwitter}
+              >
+                <TwitterIcon />
               </IconButton>
             </span>
           </div>
