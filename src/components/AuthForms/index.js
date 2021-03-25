@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import Logo from "../../assets/logo.png";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, Modal, Button } from "@material-ui/core";
+import { TextField, Modal, Button, IconButton } from "@material-ui/core";
+import { Google as GoogleIcon } from "@material-ui/icons";
 
+import firebase from "firebase";
 import { auth } from "../../firebase";
 
 import styles from "./style";
@@ -20,6 +22,12 @@ function getModalStyle() {
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
   };
+}
+
+function signInWithGoogle(event) {
+  event.preventDefault();
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider);
 }
 
 function SignUpForm({ openSignUp, setOpenSignUp }) {
@@ -85,15 +93,27 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
             className={classes.field}
           />{" "}
           <br />
-          <Button
-            type="submit"
-            onClick={signUp}
-            variant="contained"
-            color="primary"
-            className="login__button"
-          >
-            Sign Up
-          </Button>
+          <div className={classes.authBtns}>
+            <Button
+              type="submit"
+              onClick={signUp}
+              variant="contained"
+              color="primary"
+              className={classes.loginBtn}
+            >
+              Sign Up
+            </Button>
+            <div className={classes.authDivider}>Or Log In with</div>
+            <span className={classes.thirdPartyAuths}>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithGoogle}
+              >
+                <GoogleIcon />
+              </IconButton>
+            </span>
+          </div>
         </form>
       </div>
     </Modal>
@@ -147,15 +167,27 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
             className={classes.field}
           />{" "}
           <br />
-          <Button
-            type="submit"
-            onClick={signIn}
-            variant="contained"
-            color="primary"
-            className="login__button"
-          >
-            Sign In
-          </Button>
+          <div className={classes.authBtns}>
+            <Button
+              type="submit"
+              onClick={signIn}
+              variant="contained"
+              color="primary"
+              className={classes.loginBtn}
+            >
+              Sign In
+            </Button>
+            <div className={classes.authDivider}>Or Log In with</div>
+            <span className={classes.thirdPartyAuths}>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithGoogle}
+              >
+                <GoogleIcon />
+              </IconButton>
+            </span>
+          </div>
         </form>
       </div>
     </Modal>
