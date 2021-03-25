@@ -13,5 +13,21 @@ export default function styles(theme) {
       width: "100%",
       marginBottom: 20,
     },
+    authButton: {
+      width: "100%",
+      textAlign: "center",
+    },
+    loginBtn: {
+      width: "100%",
+    },
+    authDivider: {
+      textAlign: "center",
+      margin: "10px",
+    },
+    thirdPartyAuths: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "space-around",
+    },
   };
 }
