@@ -4,7 +4,11 @@ import Logo from "../../assets/logo.png";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button, IconButton } from "@material-ui/core";
-import { Facebook as FacebookIcon } from "@material-ui/icons";
+import {
+  Facebook as FacebookIcon,
+  Google as GoogleIcon,
+  Twitter as TwitterIcon,
+} from "@material-ui/icons";
 
 import firebase from "firebase";
 import { auth } from "../../firebase";
@@ -22,6 +26,18 @@ function getModalStyle() {
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
   };
+}
+
+function signInWithGoogle(event) {
+  event.preventDefault();
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider);
+}
+
+function signInWithTwitter(event) {
+  event.preventDefault();
+  var provider = new firebase.auth.TwitterAuthProvider();
+  firebase.auth().signInWithPopup(provider);
 }
 
 function signInWithFacebook(event) {
@@ -103,8 +119,22 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
             >
               Sign Up
             </Button>
-            <div className={classes.authDivider}>Or Log In with</div>
+            <div className={classes.authDivider}>Or Sign Up with</div>
             <span className={classes.thirdPartyAuths}>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithGoogle}
+              >
+                <GoogleIcon />
+              </IconButton>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithTwitter}
+              >
+                <TwitterIcon />
+              </IconButton>
               <IconButton
                 color="primary"
                 type="submit"
@@ -177,8 +207,22 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
             >
               Sign In
             </Button>
-            <div className={classes.authDivider}>Or Log In with</div>
+            <div className={classes.authDivider}>Or Sign In with</div>
             <span className={classes.thirdPartyAuths}>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithGoogle}
+              >
+                <GoogleIcon />
+              </IconButton>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithTwitter}
+              >
+                <TwitterIcon />
+              </IconButton>
               <IconButton
                 color="primary"
                 type="submit"
