@@ -35,7 +35,7 @@ function signInWithGoogle(event) {
 
 function signInWithTwitter(event) {
   event.preventDefault();
-  var provider = new firebase.auth.TwitterAuthProvider();
+  var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
 }
 
