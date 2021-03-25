@@ -124,21 +124,30 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithGoogle}
+                onClick={(e) => {
+                  signInWithGoogle(e);
+                  setOpenSignUp(false);
+                }}
               >
                 <GoogleIcon />
               </IconButton>
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithTwitter}
+                onClick={(e) => {
+                  signInWithTwitter(e);
+                  setOpenSignUp(false);
+                }}
               >
                 <TwitterIcon />
               </IconButton>
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithFacebook}
+                onClick={(e) => {
+                  signInWithFacebook(e);
+                  setOpenSignUp(false);
+                }}
               >
                 <FacebookIcon />
               </IconButton>
@@ -212,21 +221,30 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithGoogle}
+                onClick={(e) => {
+                  signInWithGoogle(e);
+                  setOpenSignIn(false);
+                }}
               >
                 <GoogleIcon />
               </IconButton>
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithTwitter}
+                onClick={(e) => {
+                  signInWithTwitter(e);
+                  setOpenSignIn(false);
+                }}
               >
                 <TwitterIcon />
               </IconButton>
               <IconButton
                 color="primary"
                 type="submit"
-                onClick={signInWithFacebook}
+                onClick={(e) => {
+                  signInWithFacebook(e);
+                  setOpenSignIn(false);
+                }}
               >
                 <FacebookIcon />
               </IconButton>
