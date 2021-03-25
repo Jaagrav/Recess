@@ -5,6 +5,7 @@ import Logo from "../../assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Modal, Button, IconButton } from "@material-ui/core";
 import {
+  Facebook as FacebookIcon,
   Google as GoogleIcon,
   Twitter as TwitterIcon,
 } from "@material-ui/icons";
@@ -36,6 +37,12 @@ function signInWithGoogle(event) {
 function signInWithTwitter(event) {
   event.preventDefault();
   var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider);
+}
+
+function signInWithFacebook(event) {
+  event.preventDefault();
+  var provider = new firebase.auth.FacebookAuthProvider();
   firebase.auth().signInWithPopup(provider);
 }
 
@@ -112,7 +119,7 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
             >
               Sign Up
             </Button>
-            <div className={classes.authDivider}>Or Log In with</div>
+            <div className={classes.authDivider}>Or Sign Up with</div>
             <span className={classes.thirdPartyAuths}>
               <IconButton
                 color="primary"
@@ -127,6 +134,13 @@ function SignUpForm({ openSignUp, setOpenSignUp }) {
                 onClick={signInWithTwitter}
               >
                 <TwitterIcon />
+              </IconButton>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithFacebook}
+              >
+                <FacebookIcon />
               </IconButton>
             </span>
           </div>
@@ -193,7 +207,7 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
             >
               Sign In
             </Button>
-            <div className={classes.authDivider}>Or Log In with</div>
+            <div className={classes.authDivider}>Or Sign In with</div>
             <span className={classes.thirdPartyAuths}>
               <IconButton
                 color="primary"
@@ -208,6 +222,13 @@ const SignInForm = ({ openSignIn, setOpenSignIn }) => {
                 onClick={signInWithTwitter}
               >
                 <TwitterIcon />
+              </IconButton>
+              <IconButton
+                color="primary"
+                type="submit"
+                onClick={signInWithFacebook}
+              >
+                <FacebookIcon />
               </IconButton>
             </span>
           </div>
